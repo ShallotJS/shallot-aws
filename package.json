@@ -1,13 +1,19 @@
 {
-  "name": "bt-typescript-npm-starter",
+  "name": "@shallot/aws",
   "version": "1.0.4",
-  "description": "A starter repo for Typescript modules",
+  "description": "A robust middleware framework for AWS Lambda",
   "keywords": [
-    "typescript"
+    "middleware",
+    "aws",
+    "serverless",
+    "aws-lambda",
+    "lambda",
+    "typescript",
+    "middy"
   ],
   "main": "dist/index.js",
+  "repository": "https://github.com/ShallotJS/shallot-aws.git",
   "types": "./dist/src/index.d.ts",
-  "repository": "https://github.com/baileytincher/typescript-npm-starter",
   "author": "Bailey Tincher <bailey.tincher@btin.io>",
   "license": "MIT",
   "private": false,
