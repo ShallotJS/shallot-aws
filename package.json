@@ -1,6 +1,6 @@
 {
   "name": "@shallot/aws",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A robust middleware framework for AWS Lambda",
   "keywords": [
     "middleware",
