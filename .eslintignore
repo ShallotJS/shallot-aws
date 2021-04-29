@@ -1,4 +1,7 @@
-node_modules/**/*
-coverage/**/*
-dist/**/*
-.github/**/*
+**/node_modules/**/*
+**/coverage/**/*
+**/dist/**/*
+**/build/**/*
+**/.github/**/*
+**/.webpack/**/*
+**/.serverless/**/*
