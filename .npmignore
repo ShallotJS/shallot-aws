@@ -6,16 +6,16 @@ jest.config.ts
 
 *.md
 
-.huskyrc.json
-.lintstagedrc.json
 .eslintignore
 .eslintrc.json
 .prettierignore
 .prettierrc.json
+.husky
 
 yarn-error.log
 
 src
+!dist/src
 
 webpack.config.ts
 tsconfig.json
