@@ -109,7 +109,7 @@ export function ShallotAWS<
     event: TEvent,
     context: Context,
     callback: Callback<TResult>
-  ) => {
+  ): Promise<TResult | void> => {
     const request: ShallotAWSRequest<TEvent, TResult> = {
       event,
       context,
@@ -140,7 +140,9 @@ export function ShallotAWS<
    * @param middleware the middleware to apply
    * @return the handler with middleware applied
    */
-  ShallotAWSHandler.use = (middleware: ShallotAWSMiddleware) => {
+  ShallotAWSHandler.use = (
+    middleware: ShallotAWSMiddleware
+  ): ShallotAWSHandler<TEvent, TResult> => {
     if (middleware.before != null) {
       middlewares.before.push(middleware.before);
     }
@@ -158,7 +160,7 @@ export function ShallotAWS<
       middlewares.finally.push(middleware.finally);
     }
 
-    return ShallotAWSHandler;
+    return ShallotAWSHandler as ShallotAWSHandler<TEvent, TResult>;
   };
 
   return ShallotAWSHandler as ShallotAWSHandler<TEvent, TResult>;
