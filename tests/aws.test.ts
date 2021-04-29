@@ -59,9 +59,7 @@ describe('ShallotAWS Core', () => {
       onError: jest.fn(basicMiddlewareHandler),
     };
 
-    const wrappedHandler = ShallotAWS(mockHandlerWithError).use(
-      basicMiddleware
-    );
+    const wrappedHandler = ShallotAWS(mockHandlerWithError).use(basicMiddleware);
 
     await wrappedHandler(undefined, mockContext, jest.fn());
 
