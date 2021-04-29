@@ -29,7 +29,7 @@ Inspired by [Express.js](http://expressjs.com/) and [Middy.js](https://middy.js.
 Add shallot to your project
 
 ```
-npm install --save shallot
+npm install --save @shallot/aws
 ```
 
 TypeScript support is out of the box so you do not need an additional types module.
@@ -39,7 +39,7 @@ TypeScript support is out of the box so you do not need an additional types modu
 REST API Wrapper Example:
 
 ```javascript
-import { ShallotAWS } from 'shallot';
+import ShallotAWS from '@shallot/aws';
 
 import { HTTPJSONBodyParser } from '@shallot/http-json-body-parser';
 import { HTTPCors } from '@shallot/http-cors';
@@ -49,7 +49,7 @@ const _handler = async (event, context) => {
   // Your handler code here
 };
 
-export const handler = ShallotAWS.ShallotAWS(handler)
+export const handler = ShallotAWS(handler)
   .use(HTTPJSONBodyParser())
   .use(HTTPCors())
   .use(HTTPErrorHandler());
@@ -151,19 +151,4 @@ The request object passed to each middleware at runtime has the following proper
   error, // Error object set before calling onError middlewares
   __handledError, // If true, allows skipping of remaining onError middlewares
 }
-```
-
-## Experimental Azure Functions Support
-
-Accepting PR's from people more experienced with Azure if the current implementation
-does not cover all Azure Functions use cases.
-
-```javascript
-import { ShallotAzure } from 'shallot';
-
-const _handler = async (context, ...args) => {
-  // Your handler code here
-};
-
-export const handler = ShallotAzure(handler).use(MyAzureFunctionMiddleware());
 ```

@@ -1,7 +1,7 @@
 {
-  "name": "shallot",
-  "version": "1.2.3",
-  "description": "A robust middleware framework for Serverless REST APIs",
+  "name": "@shallot/aws",
+  "version": "1.0.0",
+  "description": "A robust middleware framework for AWS Lambda",
   "keywords": [
     "middleware",
     "aws",
