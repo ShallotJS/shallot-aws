@@ -6,7 +6,7 @@
     "typescript"
   ],
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "./dist/src/index.d.ts",
   "repository": "https://github.com/baileytincher/typescript-npm-starter",
   "author": "Bailey Tincher <bailey.tincher@btin.io>",
   "license": "MIT",

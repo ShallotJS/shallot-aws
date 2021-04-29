@@ -6,7 +6,7 @@ import nodeExternals from 'webpack-node-externals';
 const config: Configuration = {
   mode: 'production',
   target: 'node',
-  entry: './src/index.ts',
+  entry: { index: './src/index.ts' },
   module: {
     rules: [
       {
@@ -25,6 +25,7 @@ const config: Configuration = {
   },
   devtool: 'source-map',
   // Type definitions are broke on webpack-node-externals
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   externals: [nodeExternals() as any],
 };
 
