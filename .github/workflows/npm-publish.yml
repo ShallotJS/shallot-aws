@@ -1,0 +1,65 @@
+name: Shallot Package Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run unit tests
+        run: yarn test
+
+  publish:
+    name: Publish to NPM
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          always-auth: true
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Set bot git config name
+        run: git config --global user.name "GitHub CD bot"
+
+      - name: Set bot git config email
+        run: git config --global user.email "github-cd-bot@example.com"
+
+      - name: Create a new release version
+        run: yarn version --new-version ${{ github.event.release.tag_name }}
+        env:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build a prod version
+        run: yarn build
+
+      - name: Publish to NPM
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
