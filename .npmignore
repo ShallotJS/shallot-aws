@@ -1,6 +1,7 @@
 tests
 coverage
 jest.config.ts
+jest.config.d.ts
 
 .github
 
@@ -18,4 +19,5 @@ src
 !dist/src
 
 webpack.config.ts
+webpack.config.d.ts
 tsconfig.json
